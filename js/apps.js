@@ -39,6 +39,14 @@ const DisplayCategories = (data) => {
     else {
         NoFound.classList.add('d-none');
     }
+
+    const quantity = document.getElementById('item-quantites');
+    quantity.innerHTML = `
+    <h3>
+    ${data.length} items categories found
+    </h3>
+    `
+
     const cardSection = document.getElementById('card-section');
     cardSection.innerHTML = ``;
 
@@ -58,19 +66,20 @@ const DisplayCategories = (data) => {
                             <p class="card-text">${item.details.slice(0, 200)}...</p>
                             <div class="d-flex justify-content-between">
                             <div>
-                            <small><img src="${item.author.img}" width='50px' class="rounded-circle"></small>
+                            <img src="${item.author.img}" width='50px' class="rounded-circle">
                            
-                           <small class="">${item.author.name} </small>
-                            <small>${item.author.published_date}</small>
+                           ${item.author.name ? item.author.name : 'Not avilable'} 
+                            
                            
                             
                             </div> 
-                            <div>
-                            <small><i class="fa-solid fa-eye"></i></small>
-                            <small>${item.total_view}</small><small></small>
+                            <div class="py-3">
+                            
+                            <i class="fa-solid fa-eye"></i>
+                            ${item.total_view ? item.total_view : 'No view Yet'}
                             </div>
-                            <div>
-                            <i class="fa-solid fa-arrow-right"></i>
+                            <div class="py-3">
+                            <i class="fa-solid fa-arrow-right" onclick="ArrowClick()"></i>
                             </div>
                             </div>
                         </div>

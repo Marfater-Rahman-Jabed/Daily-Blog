@@ -38,6 +38,97 @@
         </div>
         <hr class="">
 
+        <section class="container mt-5 mb-4">
+            <h1>(1.) Difference between <span class="text-primary">var,</span> <span class="text-warning">let</span> &
+                <span class="text-danger">const</span>
+            </h1>
+            <hr>
+            <h1><span class="text-primary">var</span></h1>
+            <p>
+                Scope essentially means where these variables are available for use. var declarations are globally
+                scoped or function/locally scoped.
+
+                The scope is global when a var variable is declared outside a function. This means that any variable
+                that is declared with var outside a function block is available for use in the whole window.
+
+                var is function scoped when it is declared within a function. This means that it is available and can be
+                accessed only within that function.
+            </p>
+            <h1><span class="text-warning">let</span></h1>
+            <p>
+                let is now preferred for variable declaration. It's no surprise as it comes as an improvement to var
+                declarations. It also solves the problem with var that we just covered. Let's consider why this is so.
+
+                let is block scoped
+                A block is a chunk of code bounded by {}. A block lives in curly braces. Anything within curly braces is
+                a block.
+
+                So a variable declared in a block with let is only available for use within that block.
+            </p>
+            <p>
+            <h1><span class="text-danger">const</span></h1>
+            Variables declared with the const maintain constant values. const declarations share some similarities with
+            let declarations.
+
+            const declarations are block scoped
+            Like let declarations, const declarations can only be accessed within the block they were declared.
+
+            const cannot be updated or re-declared
+            This means that the value of a variable declared with const remains the same within its scope. It cannot be
+            updated or re-declared.
+            </p>
+        </section><br><br>
+        <section class="container mt-5 mb-5">
+            <h1>
+                (2.) Difference between <span class="text-danger">Arrow function</span> & <span
+                    class="text-warning">Regular function</span>
+            </h1>
+            <hr>
+            <p>
+                Arrow function — also called fat arrow function — is a new feature introduced in ES6 that is a more
+                concise syntax for a writing function expression.
+
+                Following are the main differences:<br>
+                Syntax<br>
+                Arguments binding<br>
+                Use of this keyword<br>
+                Using a new keyword<br>
+                No duplicate named parameters<br><br><br>
+                1) Syntax: <br>
+                A developer can get the same result as regular functions by writing a few lines of code using arrow
+                functions. <br><br>
+                2) Arguments binding <br>
+                Arrow functions do not have arguments binding.
+                <br><br>
+                3) Use of this keyword <br>
+                unlike Regular functions, arrow function does not have their own "this" keyword.
+
+                The value of this inside an arrow function remains the same throughout the lifecycle of the function and
+                is always bound to the value of this in the closest non-arrow parent function. <br><br>
+                4) Using a new keyword <br>
+                Regular functions created using function declarations or expressions are constructible and callable.
+                Regular functions are constructible; they can be called using the new keyword.
+
+                However, the arrow functions are only callable and not constructible, i.e., arrow functions can never be
+                used as constructor functions. <br><br>
+                5) No duplicate named parameters <br>
+                Arrow functions can never have duplicate named parameters, whether in strict or non-strict mode.
+
+                However, We can use duplicate named parameters for regular function in non-strict mode.
+        </section>
+        <section class="container mt-8 mb-5"><br><br>
+            <h1>(3.) Why should we use <span class="text-primary">Template String</span> ?? </h1>
+            <hr>
+            <p>
+                A string template expression is a new kind of expression in the Java language. A string template
+                expression can perform string interpolation, but is also "programmable" in a way that helps developers
+                to compose strings safely and efficiently.
+                Template literals (template strings) allow you to use strings or embedded expressions in the form of a
+                string. They are enclosed in backticks `` . For example, const name = 'Jack'; console.
+
+            </p>
+        </section>
+
 
     </section>
 </body>
