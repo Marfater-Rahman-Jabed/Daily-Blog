@@ -1,4 +1,5 @@
 const LoadApi = () => {
+
     const url = `https://openapi.programming-hero.com/api/news/categories`;
     fetch(url)
         .then(res => res.json())
@@ -6,6 +7,7 @@ const LoadApi = () => {
 }
 
 const displayApi = (data) => {
+
     // console.log(data);
     const catagoriList = document.getElementById('catagory-List');
     catagoriList.classList.add('mx-4');
@@ -30,10 +32,18 @@ const catagories = (data) => {
 
 const DisplayCategories = (data) => {
     console.log(data);
+    const NoFound = document.getElementById('no-Found');
+    if (data.length == 0) {
+        NoFound.classList.remove('d-none');
+    }
+    else {
+        NoFound.classList.add('d-none');
+    }
     const cardSection = document.getElementById('card-section');
     cardSection.innerHTML = ``;
 
     data.forEach(item => {
+
         const div = document.createElement('div');
         div.classList.add('card');
         div.classList.add('mb-3');
@@ -50,7 +60,7 @@ const DisplayCategories = (data) => {
                             <div>
                             <small><img src="${item.author.img}" width='50px' class="rounded-circle"></small>
                            
-                           <small class="">${item.author.name}</small>
+                           <small class="">${item.author.name} </small>
                             <small>${item.author.published_date}</small>
                            
                             
@@ -71,6 +81,7 @@ const DisplayCategories = (data) => {
 
     })
 }
+
 
 catagories();
 LoadApi();
