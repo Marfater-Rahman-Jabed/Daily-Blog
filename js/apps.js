@@ -13,7 +13,7 @@ const displayApi = (data) => {
         const text = document.createElement('span');
         // text.innerText = item.category_name;
         text.innerHTML = `
-        <span class="mx-3 "><a href="#" class="text-decoration-none text-secondary" onclick ="catagories(data)" id="${item.category_id}">${item.category_name}</a></span>
+        <span class="mx-3 "><a href="#" class="text-decoration-none text-secondary" onclick ="catagories('${item.category_id}')" id="${item.category_id}">${item.category_name}</a></span>
         `
 
         catagoriList.appendChild(text);
@@ -21,8 +21,9 @@ const displayApi = (data) => {
     });
 }
 
-const catagories = () => {
-    fetch(`https://openapi.programming-hero.com/api/news/category/01`)
+const catagories = (data) => {
+    console.log(data);
+    fetch(`https://openapi.programming-hero.com/api/news/category/${data}`)
         .then(res => res.json())
         .then(data => DisplayCategories(data.data))
 }
@@ -30,7 +31,7 @@ const catagories = () => {
 const DisplayCategories = (data) => {
     console.log(data);
     const cardSection = document.getElementById('card-section');
-
+    cardSection.innerHTML = ``;
 
     data.forEach(item => {
         const div = document.createElement('div');
