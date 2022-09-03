@@ -17,9 +17,10 @@ const displayApi = (data) => {
         // text.innerText = item.category_name;
         text.innerHTML = `
         <span class="mx-3 "><a href="#" class="text-decoration-none text-secondary" onclick ="catagories('${item.category_id}')" id="${item.category_id}">${item.category_name}</a></span>
-        `
-
+        `;
+        toggler(true);
         catagoriList.appendChild(text);
+
 
     });
 
@@ -90,7 +91,7 @@ const DisplayCategories = (data) => {
                 </div>
         `;
         cardSection.appendChild(div);
-
+        toggler(false);
     })
 }
 
