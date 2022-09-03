@@ -8,6 +8,7 @@ const LoadApi = () => {
 
 const displayApi = (data) => {
 
+
     // console.log(data);
     const catagoriList = document.getElementById('catagory-List');
     catagoriList.classList.add('mx-4');
@@ -21,23 +22,24 @@ const displayApi = (data) => {
         catagoriList.appendChild(text);
 
     });
+
 }
 
 const catagories = (data) => {
-    console.log(data);
+    // console.log(data);
     fetch(`https://openapi.programming-hero.com/api/news/category/${data}`)
         .then(res => res.json())
         .then(data => DisplayCategories(data.data))
 }
 
 const DisplayCategories = (data) => {
-    console.log(data);
+    // console.log(data);
     const NoFound = document.getElementById('no-Found');
-    if (data.length == 0) {
-        NoFound.classList.remove('d-none');
+    if (data.length > 0) {
+        NoFound.classList.add('d-none');
     }
     else {
-        NoFound.classList.add('d-none');
+        NoFound.classList.remove('d-none');
     }
 
     const quantity = document.getElementById('item-quantites');
@@ -79,7 +81,8 @@ const DisplayCategories = (data) => {
                             ${item.total_view ? item.total_view : 'No view Yet'}
                             </div>
                             <div class="py-3">
-                            <i class="fa-solid fa-arrow-right" onclick="ArrowClick()"></i>
+                            <button onclick="ArrowClick('${item._id}')" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right" ></i></button>
+                            
                             </div>
                             </div>
                         </div>
@@ -91,6 +94,55 @@ const DisplayCategories = (data) => {
     })
 }
 
+const ArrowClick = (data) => {
+    // const url = `https://openapi.programming-hero.com/api/news/{news_id}`
+    fetch(`https://openapi.programming-hero.com/api/news/${data}`)
+        .then(res => res.json())
+        .then(data => detailsArrow(data))
 
-catagories();
+}
+
+const detailsArrow = (data) => {
+    console.log(data.data[0].details);
+    const modalElement = document.getElementById('modalElement');
+    const div = document.createElement('div');
+    div.innerHTML = `
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+               <p>${data.data[0].details}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+       `;
+    modalElement.appendChild(div);
+
+}
+
+const toggler = isloading => {
+    const spinner = document.getElementById('loader');
+    if (isloading) {
+        spinner.classList.remove('d-none');
+
+    }
+    else {
+        spinner.classList.add('d-none');
+    }
+}
+
+ArrowClick();
+
+// catagories();
 LoadApi();
